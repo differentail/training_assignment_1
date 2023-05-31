@@ -4,9 +4,9 @@
 class Solve1
   def initialize(number)
     @number = number
-    @digits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    @digits = Array.new(10, 0)
 
-    while number > 0
+    while number.nonzero?
       @digits[number % 10] += 1
       number /= 10
     end
@@ -15,7 +15,7 @@ class Solve1
   def solve
     ans = String.new
     9.downto(0) do |digit|
-      ans = ans << (digit.to_s * @digits[digit])
+      ans << (digit.to_s * @digits[digit])
     end
 
     ans.to_i

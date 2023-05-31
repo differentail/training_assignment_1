@@ -2,22 +2,53 @@
 
 require './p1'
 RSpec.describe Solve1 do
-  it 'solves p1 lol' do
-    s = Solve1.new(1234)
-    expect(s.solve).to eq(4321)
-    s = Solve1.new(1001)
-    expect(s.solve).to eq(1100)
-    s = Solve1.new(9879)
-    expect(s.solve).to eq(9987)
-    s = Solve1.new(45)
-    expect(s.solve).to eq(54)
-    s = Solve1.new(0)
-    expect(s.solve).to eq(0)
-    s = Solve1.new(8)
-    expect(s.solve).to eq(8)
-    s = Solve1.new(758_493)
-    expect(s.solve).to eq(987_543)
-    s = Solve1.new(987_543)
-    expect(s.solve).to eq(987_543)
+  let(:s) { Solve1.new(number) }
+
+  describe 'easy cases' do
+    let(:number) { 1234 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(4321)
+    end
+
+    let(:number) { 1001 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(1100)
+    end
+
+    let(:number) { 9879 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(9987)
+    end
+  end
+
+  describe 'two digits case' do
+    let(:number) { 45 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(54)
+    end
+  end
+
+  describe 'single digits cases' do
+    let(:number) { 8 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(8)
+    end
+
+    let(:number) { 0 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(0)
+    end
+  end
+
+  describe 'big numbers cases' do
+    let(:number) { 758_493 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(987_543)
+    end
+
+    let(:number) { 987_543 }
+    it 'solves correctly' do
+      expect(s.solve).to eq(987_543)
+    end
   end
 end
