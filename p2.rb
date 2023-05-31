@@ -2,24 +2,12 @@
 
 # tree structure class
 class Tree
-  attr_reader :number
+  attr_reader :number, :left, :right
 
   def initialize(number, left = nil, right = nil)
     @number = number
     @left = left
     @right = right
-  end
-
-  def left
-    return @left unless @left.nil?
-
-    nil
-  end
-
-  def right
-    return @right unless @right.nil?
-
-    nil
   end
 end
 
@@ -30,9 +18,9 @@ class Solve2
   end
 
   def solve
-    return search(@tree, @tree.number) unless @tree.nil?
+    return 0 if @tree.nil?
 
-    0
+    search(@tree, @tree.number)
   end
 
   def search(tree, max)
