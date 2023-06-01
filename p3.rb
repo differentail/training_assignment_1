@@ -2,6 +2,31 @@
 
 # solver class for p3
 class Solve3
+  def solve(a_cnt, b_cnt, c_cnt)
+    @res = String.new
+    @a_cnt = a_cnt
+    @b_cnt = b_cnt
+    @c_cnt = c_cnt
+
+    while (@a_cnt.nonzero? ? 1 : 0) + (@b_cnt.nonzero? ? 1 : 0) + (@c_cnt.nonzero? ? 1 : 0) > 1
+      if @a_cnt >= @b_cnt && @a_cnt >= @c_cnt
+        add_char('a')
+      elsif @b_cnt >= @a_cnt && @b_cnt >= @c_cnt
+        add_char('b')
+      else
+        add_char('c')
+      end
+    end
+
+    add_ending('a')
+    add_ending('b')
+    add_ending('c')
+
+    @res
+  end
+
+  private
+
   def add_char(char_to_add)
     add_cnt = @res.end_with?(char_to_add) ? 1 : 2
     case char_to_add
@@ -70,29 +95,6 @@ class Solve3
 
   def can_add_two(char_to_add)
     @res.empty? || !@res.end_with?(char_to_add)
-  end
-
-  def solve(a_cnt, b_cnt, c_cnt)
-    @res = String.new
-    @a_cnt = a_cnt
-    @b_cnt = b_cnt
-    @c_cnt = c_cnt
-
-    while (@a_cnt.nonzero? ? 1 : 0) + (@b_cnt.nonzero? ? 1 : 0) + (@c_cnt.nonzero? ? 1 : 0) > 1
-      if @a_cnt >= @b_cnt && @a_cnt >= @c_cnt
-        add_char('a')
-      elsif @b_cnt >= @a_cnt && @b_cnt >= @c_cnt
-        add_char('b')
-      else
-        add_char('c')
-      end
-    end
-
-    add_ending('a')
-    add_ending('b')
-    add_ending('c')
-
-    @res
   end
 end
 
